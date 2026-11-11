@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';  
 import { Picker } from '@react-native-picker/picker';
+import { LinearGradient } from 'expo-linear-gradient';
 import ResultView from './resultView';
 
 function mostrarAlerta(titulo, mensagem) {
@@ -59,7 +60,7 @@ export default function ConversaoView({ viewModel }) {
   }, [viewModel.alerta]);
 
   return (
-    <View style={styles.tela}>
+    <LinearGradient colors={['#000000', '#040a1c']} style={styles.tela}>
       <View style={styles.cabecalho}>
         <Text style={styles.tituloCabecalho}>Conversor Moedas da FrankFurther</Text>
         <Text style={styles.descricaoCabecalho}>
@@ -166,17 +167,16 @@ export default function ConversaoView({ viewModel }) {
         aoFechar={viewModel.fecharResultado }
       />
 
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   cabecalho: {
-    backgroundColor: '#000',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingBottom: 12,
@@ -207,28 +207,27 @@ const styles = StyleSheet.create({
   cartao: {
     width: '100%',
     maxWidth: 520,
-    borderWidth: 1,
-    borderColor: '#000',
     padding: 16,
   },
   rotulo: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#fff',
     marginTop: 12,
     marginBottom: 6,
   },
   campo: {
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#fff',
+    borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 10,
     fontSize: 16,
-    color: '#000',
+    color: '#fff',
   },
   dica: {
     fontSize: 12,
-    color: '#555',
+    color: '#aaa',
     marginTop: 4,
   },
   linhaMoedas: {
@@ -240,11 +239,13 @@ const styles = StyleSheet.create({
   },
   caixaSeletor: {
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#fff',
+    borderRadius: 8,
+    overflow: 'hidden',
   },
   seletor: {
-    color: '#000',
-    backgroundColor: '#fff',
+    color: '#fff',
+    backgroundColor: '#000',
     borderWidth: 0,
     padding: 10,
     fontSize: 15,
@@ -257,25 +258,26 @@ const styles = StyleSheet.create({
   },
   setas: {
     fontSize: 32,
-    color: '#000',
+    color: '#fff',
   },
   textoInverter: {
     fontSize: 12,
-    color: '#000',
+    color: '#fff',
   },
   botao: {
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
+    borderRadius: 8,
     paddingVertical: 14,
     alignItems: 'center',
     marginTop: 24,
   },
   textoBotao: {
-    color: '#fff',
+    color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
   },
   textoErro: {
-    color: '#000',
+    color: '#fff',
     fontSize: 14,
     marginTop: 12,
     textAlign: 'center',

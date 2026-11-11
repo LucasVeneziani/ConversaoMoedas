@@ -1,11 +1,12 @@
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function renderizarConteudo(resultado, aoFechar) {
   if (resultado === null) {
     return null;
   }
   return (
-    <View style={styles.pagina}>
+    <LinearGradient colors={['#000000', '#040a1c']} style={styles.pagina}>
       <View style={styles.cartao}>
         <Text style={styles.titulo}>Resultado da conversão</Text>
         <Text style={styles.valorOriginal}>{resultado.valorOriginal}</Text>
@@ -21,7 +22,7 @@ function renderizarConteudo(resultado, aoFechar) {
           <Text style={styles.textoBotao}>Nova conversão</Text>
         </Pressable>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -40,7 +41,6 @@ export default function ResultView({ resultado, aoFechar }) {
 const styles = StyleSheet.create({
   pagina: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
@@ -48,51 +48,50 @@ const styles = StyleSheet.create({
   cartao: {
     width: '100%',
     maxWidth: 520,
-    borderWidth: 1,
-    borderColor: '#000',
     padding: 24,
     alignItems: 'center',
   },
   titulo: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#fff',
     marginBottom: 20,
   },
   valorOriginal: {
     fontSize: 20,
-    color: '#000',
+    color: '#fff',
   },
   equivale: {
     fontSize: 14,
-    color: '#555',
+    color: '#aaa',
     marginVertical: 6,
   },
   valorConvertido: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#fff',
   },
   separador: {
     height: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     marginVertical: 20,
   },
   detalhe: {
     fontSize: 14,
-    color: '#000',
+    color: '#fff',
     marginBottom: 4,
   },
   botao: {
     alignSelf: 'stretch',
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
+    borderRadius: 8,
     paddingVertical: 14,
     alignItems: 'center',
     marginTop: 20,
   },
   textoBotao: {
-    color: '#fff',
+    color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
   },
