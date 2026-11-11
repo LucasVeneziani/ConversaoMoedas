@@ -18,11 +18,11 @@ npm install
 
 Imagens do programa no celular
 
-![](assets\Imagens\1.jpeg)
-![](assets\Imagens\2.jpeg)
-![](assets\Imagens\3.jpeg)
-![](assets\Imagens\4.jpeg)
-![](assets\Imagens\5.jpeg)
-![](assets\Imagens\6.jpeg)
-![](assets\Imagens\7.jpeg)
-![](assets\Imagens\8.jpeg)
+![](assets/Imagens/1.jpeg)
+![](assets/Imagens/2.jpeg)
+![](assets/Imagens/3.jpeg)
+![](assets/Imagens/4.jpeg)
+![](assets/Imagens/5.jpeg)
+![](assets/Imagens/6.jpeg)
+![](assets/Imagens/7.jpeg)
+![](assets/Imagens/8.jpeg)
