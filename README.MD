@@ -14,7 +14,14 @@ git clone https://github.com/LucasVeneziani/ConversaoMoedas.git
 # E depois instale
 
 npm install
+
+# Apos isso você pode fazer um
+
+npx expo start
+
 ```
+
+
 
 Imagens do programa no celular
 
