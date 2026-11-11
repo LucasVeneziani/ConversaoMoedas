@@ -1,46 +1,44 @@
 import { useEffect } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';  
 import { Picker } from '@react-native-picker/picker';
 import ResultView from './resultView';
 
 function mostrarAlerta(titulo, mensagem) {
-  if (Platform.OS === 'web') {
-    window.alert(titulo + '\n\n' + mensagem);
+
+
+
+  if (typeof document !== 'undefined') {
+    window.alert(titulo + '\n\n' + mensagem  ); 
     return;
   }
   Alert.alert(titulo, mensagem);
+
+
 }
 
 function renderizarItensMoedas(moedas) {
-  return moedas.map(function (moeda) {
+
+
+
+  return moedas.map(function ( moeda ) {
+
+
     return (
+
       <Picker.Item
         key={moeda.codigo}
         label={moeda.codigo + ' - ' + moeda.nome}
-        value={moeda.codigo}
-      />
+        value={moeda.codigo} 
+      /> 
+
+
     );
   });
 }
 
 function renderizarConteudoBotao(carregando) {
   if (carregando) {
-    return (
-      <View style={styles.linhaCarregando}>
-        <ActivityIndicator color="#fff" />
-        <Text style={styles.textoBotao}>Convertendo...</Text>
-      </View>
-    );
+    return <Text style={styles.textoBotao}>Convertendo...</Text>;
   }
   return <Text style={styles.textoBotao}>Converter valor</Text>;
 }
@@ -63,31 +61,49 @@ export default function ConversaoView({ viewModel }) {
   return (
     <View style={styles.tela}>
       <View style={styles.cabecalho}>
-        <Text style={styles.subtituloCabecalho}>CÂMBIO · FRANKFURTER</Text>
-        <Text style={styles.tituloCabecalho}>Conversor de moedas</Text>
+        <Text style={styles.tituloCabecalho}>Conversor Moedas da FrankFurther</Text>
         <Text style={styles.descricaoCabecalho}>
-          Consulte taxas de referência e converta seus valores.
+          Converta valores entre diferentes moedas facilmente
         </Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.conteudo}>
+        
         <View style={styles.cartao}>
+
           <Text style={styles.rotulo}>Valor</Text>
+
+
           <TextInput
             style={styles.campo}
-            placeholder="Ex.: 150,00"
-            placeholderTextColor="#888"
-            keyboardType="decimal-pad"
-            value={viewModel.valor}
-            onChangeText={viewModel.setValor}
-            editable={!viewModel.carregando}
-          />
-          <Text style={styles.dica}>Use ponto ou vírgula para separar os centavos.</Text>
 
-          <View style={styles.linhaMoedas}>
+            placeholder="exemplo: 150,00 "
+
+            placeholderTextColor="#888"
+
+            keyboardType="decimal-pad"
+
+            value={viewModel.valor}
+
+            onChangeText= { viewModel.setValor }
+
+            editable= { !viewModel.carregando }
+
+
+          />
+
+
+          <View style= {styles.linhaMoedas } >
+
+
             <View style={styles.colunaMoedas}>
+
+
               <Text style={styles.rotulo}>De</Text>
+
               <View style={styles.caixaSeletor}>
+
+
                 <Picker
                   style={styles.seletor}
                   selectedValue={viewModel.origem}
@@ -96,10 +112,14 @@ export default function ConversaoView({ viewModel }) {
                 >
                   {renderizarItensMoedas(viewModel.moedas)}
                 </Picker>
+
+
               </View>
 
               <Text style={styles.rotulo}>Para</Text>
+
               <View style={styles.caixaSeletor}>
+
                 <Picker
                   style={styles.seletor}
                   selectedValue={viewModel.destino}
@@ -108,7 +128,10 @@ export default function ConversaoView({ viewModel }) {
                 >
                   {renderizarItensMoedas(viewModel.moedas)}
                 </Picker>
+
               </View>
+
+
             </View>
 
             <Pressable
@@ -119,6 +142,8 @@ export default function ConversaoView({ viewModel }) {
               <Text style={styles.setas}>⇅</Text>
               <Text style={styles.textoInverter}>Inverter</Text>
             </Pressable>
+
+
           </View>
 
           <Pressable
@@ -129,14 +154,18 @@ export default function ConversaoView({ viewModel }) {
             {renderizarConteudoBotao(viewModel.carregando)}
           </Pressable>
 
+
           {renderizarErro(viewModel.erroConversao)}
+
         </View>
+
       </ScrollView>
 
       <ResultView
-        resultado={viewModel.resultado}
-        aoFechar={viewModel.fecharResultado}
+        resultado={viewModel.resultado }
+        aoFechar={viewModel.fecharResultado }
       />
+
     </View>
   );
 }
@@ -151,13 +180,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingBottom: 12,
-    paddingTop: Platform.select({ web: 12, default: 48 }),
+    paddingTop: 40,
   },
   subtituloCabecalho: {
     color: '#fff',
-    fontSize: 10,
+    fontSize: 15,
     fontWeight: 'bold',
-    letterSpacing: 1.5,
   },
   tituloCabecalho: {
     color: '#fff',
@@ -240,11 +268,6 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     alignItems: 'center',
     marginTop: 24,
-  },
-  linhaCarregando: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
   },
   textoBotao: {
     color: '#fff',

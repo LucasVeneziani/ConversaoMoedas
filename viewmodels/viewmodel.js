@@ -1,35 +1,47 @@
 import { useEffect, useState } from 'react';
 import { buscarMoedas, converterValor } from '../models/model';
 
+
 const MOEDAS_INICIAIS = [
   { codigo: 'BRL', nome: 'Brazilian Real' },
   { codigo: 'USD', nome: 'United States Dollar' },
 ];
 
+
 function lerValor(texto) {
   const textoLimpo = texto.trim().replace(',', '.');
   if (textoLimpo === '') {
     return NaN;
+
   }
   return Number(textoLimpo);
+
 }
 
 function validar(texto, origem, destino) {
+
+
   if (texto.trim() === '') {
     return 'Informe o valor que deseja converter.';
   }
+
   const numero = lerValor(texto);
   if (isNaN(numero)) {
     return 'Informe um valor numérico válido.';
   }
+
   if (numero <= 0) {
     return 'O valor precisa ser maior que zero.';
   }
+
   if (origem === destino) {
     return 'Escolha moedas de origem e destino diferentes.';
   }
   return '';
+
+
 }
+
 
 function arredondar(numero) {
   return Math.round(numero * 100) / 100;
@@ -58,14 +70,15 @@ function criarAlertaDeErro(erro, mensagem) {
 }
 
 export default function useConversaoViewModel() {
+
   const [valor, setValor] = useState('');
   const [moedas, setMoedas] = useState(MOEDAS_INICIAIS);
   const [origem, setOrigem] = useState('USD');
   const [destino, setDestino] = useState('BRL');
   const [carregando, setCarregando] = useState(false);
-  const [resultado, setResultado] = useState(null);
+  const [resultado, setResultado] = useState(null );
   const [erroConversao, setErroConversao] = useState('');
-  const [alerta, setAlerta] = useState(null);
+  const [alerta, setAlerta] = useState(null );
 
   useEffect(() => {
     carregarMoedas();
@@ -99,18 +112,24 @@ export default function useConversaoViewModel() {
     try {
       const numero = lerValor(valor);
       const conversao = await converterValor(numero, origem, destino);
+
+
       setResultado({
+
         valorOriginal: formatarNumero(arredondar(numero), 2) + ' ' + origem,
         valorConvertido: formatarNumero(arredondar(conversao.valorConvertido), 2) + ' ' + destino,
         taxa: '1 ' + origem + ' = ' + formatarNumero(conversao.taxa, 4) + ' ' + destino,
         data: formatarData(conversao.data),
+
       });
+
     } catch (erro) {
       setErroConversao('Não foi possível obter o valor da conversão.');
       setAlerta(criarAlertaDeErro(erro, 'Não foi possível obter o valor da conversão.'));
     } finally {
       setCarregando(false);
     }
+    
   }
 
   function fecharResultado() {
