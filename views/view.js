@@ -60,19 +60,30 @@ export default function ConversaoView({ viewModel }) {
   }, [viewModel.alerta]);
 
   return (
-    <LinearGradient colors={['#000000', '#040a1c']} style={styles.tela}>
+
+    <LinearGradient colors={['#000000', '#0b1b4e']} style={styles.tela}>
+
       <View style={styles.cabecalho}>
+
         <Text style={styles.tituloCabecalho}>Conversor Moedas da FrankFurther</Text>
+
         <Text style={styles.descricaoCabecalho}>
+
           Converta valores entre diferentes moedas facilmente
+
         </Text>
+
+
+
       </View>
+
+
 
       <ScrollView contentContainerStyle={styles.conteudo}>
         
         <View style={styles.cartao}>
 
-          <Text style={styles.rotulo}>Valor</Text>
+          <Text style={styles.rotulo}>Valor Monetário (pode ser decimal)</Text>
 
 
           <TextInput
@@ -100,7 +111,7 @@ export default function ConversaoView({ viewModel }) {
             <View style={styles.colunaMoedas}>
 
 
-              <Text style={styles.rotulo}>De</Text>
+              <Text style={styles.rotulo}> De </Text>
 
               <View style={styles.caixaSeletor}>
 
@@ -117,7 +128,7 @@ export default function ConversaoView({ viewModel }) {
 
               </View>
 
-              <Text style={styles.rotulo}>Para</Text>
+              <Text style={styles.rotulo}> Para </Text>
 
               <View style={styles.caixaSeletor}>
 
@@ -172,9 +183,12 @@ export default function ConversaoView({ viewModel }) {
 }
 
 const styles = StyleSheet.create({
+
   tela: {
     flex: 1,
   },
+
+
   cabecalho: {
     backgroundColor: 'transparent',
     alignItems: 'center',
@@ -182,11 +196,15 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
     paddingTop: 40,
   },
+
+
   subtituloCabecalho: {
     color: '#fff',
     fontSize: 15,
     fontWeight: 'bold',
   },
+
+
   tituloCabecalho: {
     color: '#fff',
     fontSize: 20,
@@ -194,28 +212,40 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textAlign: 'center',
   },
+
+
   descricaoCabecalho: {
     color: '#ccc',
     fontSize: 12,
     marginTop: 2,
     textAlign: 'center',
   },
+
+
   conteudo: {
     padding: 16,
     alignItems: 'center',
+
   },
+
+
   cartao: {
     width: '100%',
     maxWidth: 520,
     padding: 16,
   },
+
+
   rotulo: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#fff',
     marginTop: 12,
     marginBottom: 6,
+    alignSelf: 'center',
   },
+
+
   campo: {
     borderWidth: 1,
     borderColor: '#fff',
@@ -223,26 +253,36 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 10,
     fontSize: 16,
-    color: '#fff',
+    color: '#ffffff',
   },
+
+
   dica: {
     fontSize: 12,
     color: '#aaa',
     marginTop: 4,
   },
+
+
   linhaMoedas: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+
+
   colunaMoedas: {
     flex: 1,
   },
+
+
   caixaSeletor: {
     borderWidth: 1,
     borderColor: '#fff',
     borderRadius: 8,
     overflow: 'hidden',
   },
+
+
   seletor: {
     color: '#fff',
     backgroundColor: '#000',
@@ -250,36 +290,54 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
   },
+
+
   botaoInverter: {
     width: 72,
     marginLeft: 12,
     marginTop: 24,
     alignItems: 'center',
   },
+
+
   setas: {
+
     fontSize: 32,
     color: '#fff',
   },
+
+
   textoInverter: {
     fontSize: 12,
     color: '#fff',
   },
+
+
   botao: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000000',
     borderRadius: 8,
     paddingVertical: 14,
     alignItems: 'center',
     marginTop: 24,
+    borderWidth: 1,
+    borderColor: '#c9c9c9',
+    borderRadius: 8
+    
   },
+
+
   textoBotao: {
-    color: '#000',
+    color: '#b59f12',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: 'bolder',
   },
+
+
   textoErro: {
     color: '#fff',
     fontSize: 14,
     marginTop: 12,
     textAlign: 'center',
-  },
+  }
+
 });
